@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Ensure the backend URL is correctly formatted
 const API_URL = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, "") || "http://localhost:5001";
+console.log("API_URL:", API_URL);
 
 function App() {
   const [tasks, setTasks] = useState([]);
