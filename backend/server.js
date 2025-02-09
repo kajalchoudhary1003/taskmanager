@@ -10,7 +10,7 @@ app.use(express.json());
 // Configure CORS
 app.use(
     cors({
-      origin: "https://taskmanager-jet.vercel.app/", // Allow only frontend origin
+      origin: "https://taskmanager-jet.vercel.app", // Allow only frontend origin
       methods: ["GET", "POST", "PATCH", "DELETE"], // Allowed HTTP methods
       credentials: true, // Allow cookies if using authentication
     })
