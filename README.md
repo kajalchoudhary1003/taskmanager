@@ -1,6 +1,10 @@
-# [Frontend](https://github.com/kajalchoudhary1003/taskmanager)
+# [Frontend Repo](https://github.com/kajalchoudhary1003/taskmanager)
 
-# [Backend](https://github.com/kajalchoudhary1003/taskmanager/tree/main)
+# [Backend Repo](https://github.com/kajalchoudhary1003/taskmanager/tree/main)
+
+# Frontend Deployed Link : https://taskmanager-jet.vercel.app/
+
+# Backend Deployed Link: https://taskmanager-04da.onrender.com/tasks
 
 # Demo Video
 
