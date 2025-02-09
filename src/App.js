@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 // const API_URL = "http://localhost:5001/tasks";
-const API_URL = process.env.REACT_APP_BACKEND_URL + "/tasks";
+const API_URL = process.env.REACT_APP_BACKEND_URL + "tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);
