@@ -2,38 +2,55 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-// const API_URL = "http://localhost:5001/tasks";
-const API_URL = process.env.REACT_APP_BACKEND_URL + "tasks";
+// Ensure the backend URL is correctly formatted
+const API_URL = process.env.REACT_APP_BACKEND_URL?.replace(/\/$/, "") || "http://localhost:5001";
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    if (API_URL) fetchTasks();
+  }, [API_URL]);
 
   const fetchTasks = async () => {
-    const response = await axios.get(API_URL);
-    setTasks(response.data);
+    try {
+      const response = await axios.get(`${API_URL}/tasks`);
+      setTasks(response.data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
   };
 
   const addTask = async () => {
     if (!newTask.trim()) return;
-    const response = await axios.post(API_URL, { title: newTask });
-    setTasks([...tasks, response.data]);
-    setNewTask("");
+    try {
+      const response = await axios.post(`${API_URL}/tasks`, { title: newTask });
+      setTasks([...tasks, response.data]);
+      setNewTask("");
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`${API_URL}/${id}`);
-    setTasks(tasks.filter((task) => task._id !== id));
+    try {
+      await axios.delete(`${API_URL}/tasks/${id}`);
+      setTasks(tasks.filter((task) => task._id !== id));
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   const completeTask = async (id) => {
-    const response = await axios.patch(`${API_URL}/${id}/complete`);
-    setTasks(tasks.map((task) => (task._id === id ? response.data : task)));
+    try {
+      const response = await axios.patch(`${API_URL}/tasks/${id}/complete`);
+      setTasks(tasks.map((task) => (task._id === id ? response.data : task)));
+    } catch (error) {
+      console.error("Error completing task:", error);
+    }
   };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md">
