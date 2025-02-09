@@ -12,7 +12,6 @@ app.use(
     cors({
       origin: "https://taskmanager-jet.vercel.app/", // Allow only frontend origin
       methods: ["GET", "POST", "PATCH", "DELETE"], // Allowed HTTP methods
-      allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
       credentials: true, // Allow cookies if using authentication
     })
   );
